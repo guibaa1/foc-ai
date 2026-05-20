@@ -8,13 +8,34 @@ public class Tarefa {
     private boolean concluida;
     private LocalDate data;
 
-    public Tarefa ( int id, String titulo, String descricao, LocalDate data){
+    public Tarefa(int id, String titulo, String descricao, LocalDate data) {
 
 
         this.id = id;
         this.titulo = titulo;
-        this.descricao  = descricao;
+        this.descricao = descricao;
         this.data = data;
         this.concluida = false;
+
+    }
+    public int getId () {
+        return id;
+    }
+
+    public String getTitulo () {
+        return titulo;
+    }
+
+    public String getDescricao () {
+        return descricao;
+    }
+
+    public boolean isConcluida () {
+        return concluida;
+    }
+
+    public LocalDate getData () {
+        return data;
     }
 }
+
