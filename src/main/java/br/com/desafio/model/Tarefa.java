@@ -5,16 +5,16 @@ public class Tarefa {
     private int id;
     private String titulo;
     private String descricao;
-    private Boolean concluido;
+    private boolean concluida;
     private LocalDate data;
 
-    public Tarefa ( Integer id, String titulo, String descricao, LocalDate data, Boolean concluido){
+    public Tarefa ( int id, String titulo, String descricao, LocalDate data){
 
 
         this.id = id;
         this.titulo = titulo;
         this.descricao  = descricao;
         this.data = data;
-        this.concluido = concluido;
+        this.concluida = false;
     }
 }

@@ -8,13 +8,13 @@ public class Usuario {
     private String senha;
     private int nivel;
 
-    public Usuario (Integer id, String nome, String email, String senha, Integer nivel){
+    public Usuario ( int id, String nome, String email, String senha){
 
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.nivel = nivel;
+        this.nivel = 1;
     }
 
 
