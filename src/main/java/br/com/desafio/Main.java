@@ -1,7 +1,7 @@
 package br.com.desafio;
 import br.com.desafio.model.Meta;
 import br.com.desafio.model.Tarefa;
-
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -149,7 +149,19 @@ public class Main {
         System.out.print("Digite a descrição da meta: ");
         String descricao = read.nextLine();
 
-        LocalDate prazo = LocalDate.now();
+        LocalDate prazo = null;
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        while (prazo == null) {
+            System.out.print("Digite o prazo da meta no formato DD/MM/AAAA: ");
+            String prazoTexto = read.nextLine();
+
+            try {
+                prazo = LocalDate.parse(prazoTexto, formato);
+            } catch (Exception e) {
+                System.out.println("Data inválida. Use o formato DD/MM/AAAA. Exemplo: 12/07/2026\n");
+            }
+        }
 
         Meta meta = new Meta(metas.size() + 1, titulo, descricao, prazo);
 
