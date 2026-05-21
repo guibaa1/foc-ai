@@ -1,4 +1,5 @@
 package br.com.desafio;
+import br.com.desafio.model.Meta;
 import br.com.desafio.model.Tarefa;
 
 import java.util.Scanner;
@@ -11,6 +12,9 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Tarefa> tarefas = new ArrayList<>();
+        ArrayList<Meta> metas = new ArrayList<>();
+
+
         int opcao = 0;
         Scanner read = new Scanner(System.in);
 
@@ -21,7 +25,8 @@ public class Main {
             System.out.println(" 2 - Listar tarefas");
             System.out.println(" 3 - Concluir tarefa");
             System.out.println(" 4 - Cadastrar meta");
-            System.out.println(" 5 - Ver progresso");
+            System.out.println(" 5 - Listar metas");
+            System.out.println(" 6 - Ver progresso");
             System.out.println(" 0 - Sair");
             System.out.println(" ");
             System.out.print(" Digite a opçao desejada: ");
@@ -53,9 +58,14 @@ public class Main {
 
                 case 4:
                     System.out.println("Cadastrar meta selecionado !!");
+                        cadastrarMeta(read, metas);
                     break;
 
                 case 5:
+                    System.out.println("Listar metas selecionado !!");
+                        listarMetas(metas);
+                    break;
+                case 6:
                     System.out.println("Ver progresso selecionado !!");
                     break;
 
@@ -127,5 +137,44 @@ public class Main {
         }
 
         System.out.println("Tarefa não encontrada.\n");
+    }
+
+    public static void cadastrarMeta(Scanner read, ArrayList<Meta> metas) {
+
+        read.nextLine();
+
+        System.out.print("Digite o título da meta: ");
+        String titulo = read.nextLine();
+
+        System.out.print("Digite a descrição da meta: ");
+        String descricao = read.nextLine();
+
+        LocalDate prazo = LocalDate.now();
+
+        Meta meta = new Meta(metas.size() + 1, titulo, descricao, prazo);
+
+        metas.add(meta);
+
+        System.out.println("Meta cadastrada com sucesso!\n");
+    }
+
+    public static void listarMetas(ArrayList<Meta> metas) {
+
+        if (metas.isEmpty()) {
+            System.out.println("Nenhuma meta cadastrada.\n");
+            return;
+        }
+
+        System.out.println("===== LISTA DE METAS =====");
+
+        for (Meta meta : metas) {
+            System.out.println("ID: " + meta.getId());
+            System.out.println("Título: " + meta.getTitulo());
+            System.out.println("Descrição: " + meta.getDescricao());
+            System.out.println("Prazo: " + meta.getPrazo());
+            System.out.println("Concluída: " + meta.isConcluida());
+            System.out.println("Progresso: " + meta.getProgresso() + "%");
+            System.out.println("----------------------------");
+        }
     }
 }
