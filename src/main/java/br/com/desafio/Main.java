@@ -48,6 +48,7 @@ public class Main {
 
                 case 3:
                     System.out.println("Concluir tarefa selecionado !!");
+                        concluirTarefa(tarefas, read);
                     break;
 
                 case 4:
@@ -63,6 +64,7 @@ public class Main {
                     break;
             }
         }
+
         while(opcao != 0);
 
 
@@ -105,4 +107,25 @@ public class Main {
             System.out.println("----------------------------");
         }
 }
+
+    public static void concluirTarefa(ArrayList<Tarefa> tarefas, Scanner read) {
+
+        if (tarefas.isEmpty()) {
+            System.out.println("Nenhuma tarefa cadastrada para concluir.\n");
+            return;
+        }
+
+        System.out.print("Digite o ID da tarefa que deseja concluir: ");
+        int id = read.nextInt();
+
+        for (Tarefa tarefa : tarefas) {
+            if (tarefa.getId() == id) {
+                tarefa.concluir();
+                System.out.println("Tarefa concluída com sucesso!\n");
+                return;
+            }
+        }
+
+        System.out.println("Tarefa não encontrada.\n");
+    }
 }

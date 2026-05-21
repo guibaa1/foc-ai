@@ -37,5 +37,9 @@ public class Tarefa {
     public LocalDate getData () {
         return data;
     }
+
+    public void concluir(){
+        this.concluida = true;
+    }
 }
 
